@@ -5,11 +5,11 @@ import store from '../state/store';
 import '../resources/styles/index.scss';
 
 function App() {
-  return (
-      <Provider store={store}>
-        <Router />
-      </Provider>
-  );
+    return (
+        <Provider store={store}>
+            <Router/>
+        </Provider>
+    );
 }
 
 export default App;

@@ -1,10 +1,13 @@
 import http from "../../libs/http";
 
 export const requestLoginUser = (payload = {}) => {
-  const endpoint = payload.rememberToken ? "login-token" : "login";
-  return http.route(endpoint).post({ ...payload });
+    return http
+        .route(payload.rememberToken ? "login-token" : "login")
+        .post({...payload});
 };
 
 export const requestGetUser = () => {
-  return http.route("user").get();
+    return http
+        .route("user")
+        .get();
 };

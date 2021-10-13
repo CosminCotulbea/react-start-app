@@ -10,7 +10,7 @@ services:
     volumes:
       - ./:/var/www
     ports:
-      - 80
+      - "80"
     depends_on:
       - react-start-node
     environment:
@@ -37,7 +37,7 @@ services:
       - ./node_modules:/var/www/node_modules
       - ${NGINX_CERTS_PATH}:/etc/certs
     ports:
-      - 60037:60037
+      - "60037:60037"
     networks:
       - react-start
 

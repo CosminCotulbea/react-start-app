@@ -48,6 +48,14 @@ class Http {
         return this;
     }
 
+    error(errorMessages = 'application.error') {
+        let isError = true;
+        return {
+            isError,
+            errorMessages
+        };
+    }
+
     build() {
         let response =
             this._response && this._response.data
@@ -113,12 +121,12 @@ class Http {
             this._response = await this._axios.get(url, {
                 params: {
                     ...options,
-                    language: localStorage.getItem("lang") || process.env.DEFAULT_LANG,
+                    language: localStorage.getItem("lang") || process.env.REACT_APP_DEFAULT_LANG,
                 },
                 ...authConfig,
             });
         } catch (e) {
-            store.dispatch(setError("errors.application"));
+            return this.error();
         }
 
         return this.build();
@@ -135,16 +143,16 @@ class Http {
         if (data instanceof FormData) {
             data.append(
                 "language",
-                localStorage.getItem("lang") || process.env.DEFAULT_LANG
+                localStorage.getItem("lang") || process.env.REACT_APP_DEFAULT_LANG
             );
         } else {
-            data.language = localStorage.getItem("lang") || process.env.DEFAULT_LANG;
+            data.language = localStorage.getItem("lang") || process.env.REACT_APP_DEFAULT_LANG;
         }
 
         try {
             this._response = await this._axios.post(url, data, authConfig);
         } catch (e) {
-            store.dispatch(setError("errors.application"));
+            return this.error();
         }
 
         return this.build();
@@ -164,7 +172,7 @@ class Http {
                 params: {...data},
             });
         } catch (e) {
-            store.dispatch(setError("errors.application"));
+            return this.error();
         }
 
         return this.build();
@@ -183,12 +191,12 @@ class Http {
                 url,
                 {
                     ...data,
-                    language: localStorage.getItem("lang") || process.env.DEFAULT_LANG,
+                    language: localStorage.getItem("lang") || process.env.REACT_APP_DEFAULT_LANG,
                 },
                 authConfig
             );
         } catch (e) {
-            store.dispatch(setError("errors.application"));
+            return this.error();
         }
 
         return this.build();
@@ -204,10 +212,10 @@ class Http {
         if (data instanceof FormData) {
             data.append(
                 "language",
-                localStorage.getItem("lang") || process.env.DEFAULT_LANG
+                localStorage.getItem("lang") || process.env.REACT_APP_DEFAULT_LANG
             );
         } else {
-            data.language = localStorage.getItem("lang") || process.env.DEFAULT_LANG;
+            data.language = localStorage.getItem("lang") || process.env.REACT_APP_DEFAULT_LANG;
         }
 
         try {
@@ -217,7 +225,7 @@ class Http {
                 authConfig
             );
         } catch (e) {
-            store.dispatch(setError("errors.application"));
+            return this.error();
         }
 
         return this.build();

@@ -1,6 +1,29 @@
-//@font-face {
-//  font-family: 'CircularStd-Bold';
-//  // src: url('/static/fonts/Montserrat-Regular.ttf'); // pattern: /directoryName/file.extension
-//  src: url('fonts/CircularStd/CircularStd-Bold.otf');
-//  font-display: swap;
-//}
+html, body, #root {
+  min-height: 100vh;
+}
+
+/* Custom checkbox style */
+.custom-checkbox {
+  input.custom-checkbox-input {
+    width: 25px;
+    height: 25px;
+    border-radius: 0;
+    margin-top: 0;
+    border: 3px solid $primary-color;
+    cursor: pointer;
+
+    &:focus {
+      box-shadow: none;
+      border-radius: 0;
+      border: 3px solid $primary-color;
+    }
+
+    &:checked {
+      background-color: #259df6;
+    }
+  }
+
+  label {
+    cursor: pointer;
+  }
+}
