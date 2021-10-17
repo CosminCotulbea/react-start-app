@@ -4,9 +4,11 @@ import {Button, Card, Col, Form, InputGroup, Row} from "react-bootstrap";
 import {FaLock, FaLockOpen, FaUser} from 'react-icons/fa';
 import {useDispatch} from "react-redux";
 import {loginUser} from "../../state/user/reducer";
+import {useTranslation} from "react-i18next";
 
 const Login = () => {
     const dispatch = useDispatch();
+    const {t} = useTranslation(['login']);
     const [showPassword, setShowPassword] = useState(false);
     const [user, setUser] = useState({
         email: "",
@@ -14,7 +16,7 @@ const Login = () => {
         remember: false
     });
 
-    const _login = async (e) => {
+    const _login = (e) => {
         e.preventDefault();
         dispatch(loginUser(user));
     };
@@ -27,10 +29,9 @@ const Login = () => {
     }
 
     return <>
-        <AuthCard title={'Login'}>
+        <AuthCard title={t('login:title')}>
             <Form onSubmit={_login} className={'mb-3'}>
                 <Form.Group>
-                    {/*<Form.Label>{'Email'}</Form.Label>*/}
                     <InputGroup className="mb-4 auth-input-group">
                         <Form.Control type="email"
                                       name="email"
@@ -41,7 +42,6 @@ const Login = () => {
                     </InputGroup>
                 </Form.Group>
                 <Form.Group>
-                    {/*<Form.Label>{'Password'}</Form.Label>*/}
                     <InputGroup className="mb-4 auth-input-group">
                         <Form.Control type={showPassword ? 'text' : 'password'}
                                       name="password"

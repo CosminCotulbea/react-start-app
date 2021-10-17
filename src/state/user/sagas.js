@@ -5,7 +5,7 @@ import {getUser, loginUser, setError, setUser} from "./reducer";
 function* handleLoginUser({payload}) {
     try {
         const {data, isError, errorMessages} = yield call(requestLoginUser, payload);
-        
+
         if (!isError) {
             yield put(setUser({data}));
             sessionStorage.setItem("token", data.token);

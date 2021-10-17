@@ -17,7 +17,7 @@ function handler(request, response) {
 try {
     let app;
 
-    if (process.env.APP_ENV === 'local') {
+    if (process.env.REACT_APP_ENV === 'local') {
         app = require('http').createServer({}, handler);
     } else {
         let fs = require('fs');
