@@ -1,10 +1,10 @@
-#Environment
+# Environment
 
-###Requirements
+### Requirements
 1) Docker (`with WSL preferably because otherwise you have to change Dockerfile or use without Docker`)
 2) Nginx by Ion Ghitun https://github.com/ionghitun/nginx-proxy
 
-###Optionals
+### Optionals
 - API (`I used for testing an API from Ion Ghitun but any can be used`)
 - https://github.com/ionghitun/lumen-start-app
 
